@@ -69,8 +69,9 @@ The following variables can be configured when running make commands:
 * `REGISTRY_URL`: The URL of the container registry (default: ghcr.io).
 * `REGISTRY_USERNAME`: The username for the container registry (default: joseamador95).
 * `VERSION`: The version of Ceedling to use (default: latest release).
-* `CONTAINER_RUNTIME`: The container runtime to use (default: podman).
+* `CONTAINER_RUNTIME`: The container runtime to use (default: `podman`).
 * `CONTAINER_RUN_ARGS`: Additional arguments to pass to the container runtime.
+* `DESTINATION_PATH`: Install location (default: `/usr/loca/bin/ceedling`)
 
 Example:
 
