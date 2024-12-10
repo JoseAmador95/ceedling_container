@@ -1,3 +1,6 @@
+LABEL description="Ceedling container for unit testing C projects"
+LABEL license="MIT"
+
 FROM alpine:3.15
 
 # Set build argument for Ceedling version
@@ -13,5 +16,3 @@ RUN apk add --no-cache --virtual .build-deps wget \
 
 # Set the entrypoint to call ceedling by default
 ENTRYPOINT ["ceedling"]
-
-# ...existing code...
