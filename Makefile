@@ -4,6 +4,7 @@ REGISTRY_USERNAME ?= joseamador95
 IMAGE_NAME = $(REGISTRY_URL)/$(REGISTRY_USERNAME)/ceedling
 CEEDLING_SCRIPT = ceedling.sh
 CEEDLING_RELEASE_URL = https://api.github.com/repos/ThrowTheSwitch/Ceedling/releases
+DESTINATION_PATH ?=
 
 # Determine the Ceedling version
 ifeq ($(VERSION),)
@@ -17,14 +18,16 @@ endif
 
 # Determine the destination path based on the operating system
 UNAME_S := $(shell uname)
-ifeq ($(UNAME_S),Darwin)
-    DESTINATION_PATH = /usr/local/bin/ceedling
-endif
-ifeq ($(UNAME_S),Linux)
-    DESTINATION_PATH = /usr/local/bin/ceedling
-endif
-ifneq (,$(filter CYGWIN% MINGW% MSYS%,$(UNAME_S)))
-    DESTINATION_PATH = /usr/bin/ceedling
+ifeq ($(DESTINATION_PATH),)
+    ifeq ($(UNAME_S),Darwin)
+        DESTINATION_PATH = /usr/local/bin/ceedling
+    endif
+    ifeq ($(UNAME_S),Linux)
+        DESTINATION_PATH = /usr/local/bin/ceedling
+    endif
+    ifneq (,$(filter CYGWIN% MINGW% MSYS%,$(UNAME_S)))
+        DESTINATION_PATH = /usr/bin/ceedling
+    endif
 endif
 
 # Default target
